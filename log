@@ -22,3 +22,15 @@ hashmap.c:66:1: error: control reaches end of non-void function [-Werror=return-
 cc1: all warnings being treated as errors
 Compilation failed
 16db653
+Thu 25 Apr 2024 06:19:46 PM UTC: 
+ hashmap.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘createMap’:
+hashmap.c:61:3: error: ‘map’ undeclared (first use in this function); did you mean ‘mapeo’?
+   61 |   map->buckers = (Pair**) malloc(capacity*sizeof(Pair*));
+      |   ^~~
+      |   mapeo
+hashmap.c:61:3: note: each undeclared identifier is reported only once for each function it appears in
+Compilation failed
+bf263c1
