@@ -2,3 +2,23 @@ Thu 25 Apr 2024 06:15:44 PM UTC:
  tests:  0|6
 total_score: 0/70
 8b14c06
+Thu 25 Apr 2024 06:19:21 PM UTC: 
+ hashmap.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+In file included from test.c:4:
+hashmap.c: In function ‘createMap’:
+hashmap.c:61:3: error: ‘map’ undeclared (first use in this function); did you mean ‘mapeo’?
+   61 |   map->buckers = (Pair**) malloc(capacity*sizeof(Pair*));
+      |   ^~~
+      |   mapeo
+hashmap.c:61:3: note: each undeclared identifier is reported only once for each function it appears in
+hashmap.c:65:3: error: expected ‘(’ before ‘return’
+   65 |   return NULL;
+      |   ^~~~~~
+      |   (
+hashmap.c:66:1: error: control reaches end of non-void function [-Werror=return-type]
+   66 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+16db653

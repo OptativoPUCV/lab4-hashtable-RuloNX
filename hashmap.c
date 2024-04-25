@@ -47,13 +47,22 @@ void insertMap(HashMap * map, char * key, void * value) {
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
 
-
 }
 
 
 HashMap * createMap(long capacity) {
 
+  HashMap *mapeo = (HashMap*) malloc(sizeof(HashMap));
+
+  if(mapeo==NULL){
     return NULL;
+  }
+
+  map->buckers = (Pair**) malloc(capacity*sizeof(Pair*));
+  if
+
+  
+  return NULL;
 }
 
 void eraseMap(HashMap * map,  char * key) {    
