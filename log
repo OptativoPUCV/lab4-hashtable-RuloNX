@@ -159,3 +159,13 @@ Thu 25 Apr 2024 07:27:48 PM UTC:
  tests:  5|4
 total_score: 30/70
 158ee62
+Thu 25 Apr 2024 07:30:04 PM UTC: 
+ hashmap.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+In file included from test.c:4:
+hashmap.c: In function ‘searchMap’:
+hashmap.c:107:26: error: ‘Pair’ has no member named ‘next’
+  107 |         current = current->next; // Move to the next Pair
+      |                          ^~
+Compilation failed
+38a2461
