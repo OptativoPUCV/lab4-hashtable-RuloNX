@@ -48,9 +48,13 @@ void insertMap(HashMap * map, char * key, void * value) {
         map->buckets[index] = new_pair;
         map->size++;
     } else {
-        // Aquí debes implementar la lógica para manejar las colisiones de hash
-        // Puedes considerar utilizar una estructura de datos adicional como una lista enlazada o una tabla de dispersión secundaria
-        // para manejar las colisiones de hash de manera efectiva
+      int hashIndex = index;
+      while (map->buckets[hashIndex] != NULL) {
+          hashIndex = (hashIndex + 1) % map->capacity;
+      }
+      Pair *new_pair = createPair(key, value);
+      map->buckets[hashIndex] = new_pair;
+      map->size++;
     }
 }
 
