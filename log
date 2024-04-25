@@ -34,3 +34,9 @@ hashmap.c:61:3: error: ‘map’ undeclared (first use in this function); did yo
 hashmap.c:61:3: note: each undeclared identifier is reported only once for each function it appears in
 Compilation failed
 bf263c1
+Thu 25 Apr 2024 06:40:46 PM UTC: 
+ hashmap.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+ tests:  0|6
+total_score: 0/70
+3d8d3b9
