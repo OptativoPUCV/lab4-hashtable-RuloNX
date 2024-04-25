@@ -140,11 +140,6 @@ Pair * nextMap(HashMap * map) {
             return map->buckets[i];
         }
     }
-    for (i = 0; i <= map->current; i++) {
-        if (map->buckets[i] != NULL && map->buckets[i]->key != NULL) {
-            map->current = i;
-            return map->buckets[i];
-        }
-    }
+    map->current = -1; // Resetear current si no se encuentra ningún dato válido
     return NULL;
 }
