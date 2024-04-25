@@ -38,31 +38,21 @@ int is_equal(void* key1, void* key2){
     return 0;
 }
 
-
 void insertMap(HashMap * map, char * key, void * value) {
     if (map == NULL || key == NULL) return;
 
     long index = hash(key, map->capacity);
 
-    Pair *new_pair = createPair(key, value);
     if (map->buckets[index] == NULL) {
+        Pair *new_pair = createPair(key, value);
         map->buckets[index] = new_pair;
+        map->size++;
     } else {
-        Pair *current = map->buckets[index];
-        while (current->next != NULL) {
-            if (is_equal(current->key, key)) {
-                free(current->value);
-                current->value = value;
-                return;
-            }
-            current = current->next;
-        }
-        current->next = new_pair;
+        // Aquí debes implementar la lógica para manejar las colisiones de hash
+        // Puedes considerar utilizar una estructura de datos adicional como una lista enlazada o una tabla de dispersión secundaria
+        // para manejar las colisiones de hash de manera efectiva
     }
-    map->size++;
 }
-
-
 
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
