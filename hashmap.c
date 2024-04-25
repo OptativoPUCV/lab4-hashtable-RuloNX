@@ -56,14 +56,7 @@ void insertMap(HashMap * map, char * key, void * value) {
                 current->value = value;
                 return;
             }
-            current = current->next;
-        }
-        Pair *new_pair = createPair(key, value);
-        current->next = new_pair;
-        map->size++;
-    }
 }
-
 
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
