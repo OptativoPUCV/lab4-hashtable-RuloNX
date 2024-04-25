@@ -185,3 +185,26 @@ Thu 25 Apr 2024 07:33:55 PM UTC:
  tests:  5|4
 total_score: 30/70
 6ff35bd
+Thu 25 Apr 2024 07:38:29 PM UTC: 
+ hashmap.c | 49 ++++++++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 40 insertions(+), 9 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘eraseMap’:
+hashmap.c:101:46: error: ‘Pair’ has no member named ‘next’
+  101 |                 map->buckets[index] = current->next;
+      |                                              ^~
+hashmap.c:103:21: error: ‘Pair’ has no member named ‘next’
+  103 |                 prev->next = current->next;
+      |                     ^~
+hashmap.c:103:37: error: ‘Pair’ has no member named ‘next’
+  103 |                 prev->next = current->next;
+      |                                     ^~
+hashmap.c:112:26: error: ‘Pair’ has no member named ‘next’
+  112 |         current = current->next;
+      |                          ^~
+hashmap.c: In function ‘searchMap’:
+hashmap.c:127:26: error: ‘Pair’ has no member named ‘next’
+  127 |         current = current->next;
+      |                          ^~
+Compilation failed
+441c183

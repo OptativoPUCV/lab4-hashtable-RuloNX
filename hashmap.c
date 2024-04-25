@@ -88,12 +88,31 @@ HashMap * createMap(long capacity) {
 }
 
 
-void eraseMap(HashMap * map,  char * key) {    
+void eraseMap(HashMap * map, char * key) {
+    if (map == NULL || key == NULL) return;
 
+    long index = hash(key, map->capacity);
+    Pair *current = map->buckets[index];
+    Pair *prev = NULL;
 
+    while (current != NULL) {
+        if (is_equal(current->key, key)) {
+            if (prev == NULL) {
+                map->buckets[index] = current->next;
+            } else {
+                prev->next = current->next;
+            }
+            free(current->key);
+            free(current->value);
+            free(current);
+            map->size--;
+            return;
+        }
+        prev = current;
+        current = current->next;
+    }
 }
 
-/*
 Pair * searchMap(HashMap * map, char * key) {
     if (map == NULL || key == NULL) return NULL;
 
@@ -109,20 +128,32 @@ Pair * searchMap(HashMap * map, char * key) {
     }
     return NULL;
 }
-*/
-
-Pair * searchMap(HashMap * map,  char * key) {   
-
-
-    return NULL;
-}
 
 Pair * firstMap(HashMap * map) {
+    if (map == NULL) return NULL;
 
+    for (long i = 0; i < map->capacity; ++i) {
+        if (map->buckets[i] != NULL) {
+            map->current = i;
+            return map->buckets[i];
+        }
+    }
     return NULL;
 }
 
 Pair * nextMap(HashMap * map) {
-
+    long i;
+    for (i = map->current + 1; i < map->capacity; i++) {
+        if (map->buckets[i] != NULL && map->buckets[i]->key != NULL) {
+            map->current = i;
+            return map->buckets[i];
+        }
+    }
+    for (i = 0; i <= map->current; i++) {
+        if (map->buckets[i] != NULL && map->buckets[i]->key != NULL) {
+            map->current = i;
+            return map->buckets[i];
+        }
+    }
     return NULL;
 }
