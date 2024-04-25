@@ -40,25 +40,24 @@ int is_equal(void* key1, void* key2){
 
 
 void insertMap(HashMap * map, char * key, void * value) {
-  long index = hash(key, map->capacity);
+    long index = hash(key, map->capacity);
 
-  Pair * new_pair = createPair(key, value);
-  if (new_pair == NULL) {
-    return;
-  }
+    Pair * new_pair = createPair(key, value);
+    if (new_pair == NULL) {
+        return;
+    }
 
-  if (map->buckets[index] == NULL) {
-    map->buckets[index] = new_pair;
-  } else {
-      Pair * current = map->buckets[index];
-      while (current->next != NULL) {
-         current = current->next;
-      }
-    current->next = new_pair;
-  }
+    if (map->buckets[index] == NULL) {
+        map->buckets[index] = new_pair;
+    } else {
+        // Si el bucket ya tiene elementos, agregamos el nuevo par al inicio
+        new_pair->next = map->buckets[index];
+        map->buckets[index] = new_pair;
+    }
 
-  map->size++;
+    map->size++;
 }
+
 
 
 void enlarge(HashMap * map) {

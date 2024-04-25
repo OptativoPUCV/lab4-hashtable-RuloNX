@@ -62,3 +62,13 @@ hashmap.c:57:12: error: ‘Pair’ has no member named ‘next’
       |            ^~
 Compilation failed
 57c8e75
+Thu 25 Apr 2024 07:17:57 PM UTC: 
+ hashmap.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:54:17: error: ‘Pair’ has no member named ‘next’
+   54 |         new_pair->next = map->buckets[index];
+      |                 ^~
+Compilation failed
+8242948
