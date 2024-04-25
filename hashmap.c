@@ -48,11 +48,22 @@ void insertMap(HashMap * map, char * key, void * value) {
         map->buckets[index] = new_pair;
         map->size++;
     } else {
-        // Aquí debes implementar la lógica para manejar las colisiones de hash
-        // Puedes considerar utilizar una estructura de datos adicional como una lista enlazada o una tabla de dispersión secundaria
-        // para manejar las colisiones de hash de manera efectiva
+        // Manejo de colisión de hash utilizando una lista enlazada
+        Pair *current = map->buckets[index];
+        while (current->next != NULL) {
+            if (is_equal(current->key, key)) {
+                free(current->value);
+                current->value = value;
+                return;
+            }
+            current = current->next;
+        }
+        Pair *new_pair = createPair(key, value);
+        current->next = new_pair;
+        map->size++;
     }
 }
+
 
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
